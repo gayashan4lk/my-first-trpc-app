@@ -1,5 +1,7 @@
 # tRPC with Next.js 13 App router - TypeSafe APIs
-https://youtu.be/qCLV0Iaq9zU?si=XLhxTFvbjA7jTnmx
+
+[Watch tutorial on youtube](https://www.youtube.com/embed/qCLV0Iaq9zU?si=hYITCw8HOEY_lAxQ)
+https://youtu.be/qCLV0Iaq9zU?si=oD1N4cLJAy85rdBI
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
