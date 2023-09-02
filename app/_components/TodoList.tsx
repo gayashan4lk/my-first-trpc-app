@@ -11,6 +11,8 @@ export default function TodoList({
 }) {
 	const getTodos = trpc.getTodos.useQuery(undefined, {
 		initialData: initialTodos,
+		refetchOnMount: false,
+		refetchOnReconnect: false,
 	});
 
 	const addTodo = trpc.addTodo.useMutation({
