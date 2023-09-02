@@ -15,17 +15,25 @@ export default function TodoList() {
 
 	return (
 		<div>
-			<div>{JSON.stringify(getTodos.data)}</div>
-			<div>
-				<label htmlFor='content'>Content</label>
+			<h1 className='mb-10 text-3xl'>My Todo List</h1>
+			{getTodos.data?.map((todo) => (
+				<div key={todo.id} className='text-lg font-medium my-2'>
+					<input type='checkbox' className='mr-4 rounded text-pink-500' />
+					<h3 className='inline align-middle'>{todo.content}</h3>
+				</div>
+			))}
+
+			<div className='mt-5'>
 				<input
 					type='text'
 					id='content'
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
-					className='text-black'
+					className='px-2 py-2 rounded-full border border-gray-400'
 				/>
+
 				<button
+					className='mx-4 p-2 w-10 h-10 rounded-full bg-blue-500'
 					onClick={async () => {
 						if (content.length) {
 							addTodo.mutate(content);
@@ -33,7 +41,7 @@ export default function TodoList() {
 						}
 					}}
 				>
-					Add Todo
+					<span className='text-white font-bold text-2xl align-middle'>+</span>
 				</button>
 			</div>
 		</div>
