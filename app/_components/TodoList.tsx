@@ -18,8 +18,15 @@ export default function TodoList() {
 			<h1 className='mb-10 text-3xl'>My Todo List</h1>
 			{getTodos.data?.map((todo) => (
 				<div key={todo.id} className='text-lg font-medium my-2'>
-					<input type='checkbox' className='mr-4 rounded text-pink-500' />
-					<h3 className='inline align-middle'>{todo.content}</h3>
+					<input
+						id={`check-${todo.id}`}
+						type='checkbox'
+						className='mr-4 rounded text-pink-500'
+						checked={!!todo.done}
+					/>
+					<h3 className={`inline align-middle ${todo.done && 'line-through'}`}>
+						{todo.content}
+					</h3>
 				</div>
 			))}
 
