@@ -5,13 +5,27 @@ import { trpc } from '../_trpc/client';
 
 export default function TodoList() {
 	const getTodos = trpc.getTodos.useQuery();
+
 	const addTodo = trpc.addTodo.useMutation({
 		onSettled: () => {
 			getTodos.refetch();
 		},
 	});
 
+	const toggleTodo = trpc.toggleTodo.useMutation({
+		onSettled: () => {
+			getTodos.refetch();
+		},
+	});
+
 	const [content, setContent] = useState('');
+
+	function flipValue(value: number) {
+		// if a todo item is "done" the value of done: 1
+		// if a todo item is not "done" the value of done: 0
+		// this function will flip the value of "done" (1) to (0) and vise versa
+		return value === 1 ? 0 : 1;
+	}
 
 	return (
 		<div>
@@ -22,9 +36,19 @@ export default function TodoList() {
 						id={`check-${todo.id}`}
 						type='checkbox'
 						className='mr-4 rounded text-pink-500'
-						checked={!!todo.done}
+						checked={todo.done === 1 ? true : false}
+						onChange={async () => {
+							toggleTodo.mutate({
+								id: todo.id,
+								done: flipValue(todo.done || 0),
+							});
+						}}
 					/>
-					<h3 className={`inline align-middle ${todo.done && 'line-through'}`}>
+					<h3
+						className={`inline align-middle ${
+							todo.done === 1 && 'line-through'
+						}`}
+					>
 						{todo.content}
 					</h3>
 				</div>
