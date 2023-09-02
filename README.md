@@ -32,3 +32,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# ⚡ Notes
+
+### Drizzle-kit Error for es5
+
+you get this error when trying to do a migration.
+
+> ❗'Transforming const to the configured target environment ("es5") is not supported yet'
+
+✅ Solution:  
+change this line in `tsconfig.json` file.
+`"target": "es5"` -> to `"target": "es6"`
